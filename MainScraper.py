@@ -48,6 +48,8 @@ def single_set_processing(search_query, language, region, domain, number_of_resu
 def make_request(search_url):
     current_proxy = {'http': choice(proxy_list)}
     page_response = requests.get(search_url, proxies=current_proxy, headers=headers, timeout=5)
+    page_response.raise_for_status()
+    # print(page_response.status_code)
     if check_status_code(page_response.status_code):
         return page_response
     else:
@@ -74,7 +76,7 @@ def add_banned_proxy(proxy):
 def run(query):
         single_set_processing(query, 'ru', 'ua', 'www.google.com.ua', 100)
         # I was using some delays for not getting banned using free proxies
-        sleep(uniform(0.2, 0.5))
+        # sleep(uniform(0.2, 0.5))
 
 
 # Create a file with a report about queries which were not executed
@@ -90,20 +92,19 @@ def create_report_file(queries_file, completed_queries_file, report_file):
         for item in queries_left:
             w.write("%s\n" % item)
 
+
 # The function to build the query list and map with 'run' function inside the ThreadPoolExecutor
 # Here is the argument to set is 'max_workers', the number of threads to be executed
 def main():
     queries_list = open("queries.txt").read().splitlines()
-    #query_pool = cycle(query_list)
+    # query_pool = cycle(query_list)
     start_time = time.time()
     with ThreadPoolExecutor(max_workers=100) as executor:
         executor.map(run, queries_list)
-
-
     # Tracking execution time for tests
     print(time.time() - start_time)
 
 
 if __name__ == "__main__":
-    #create_report_file('queries.txt', 'output.tsv', 'report.txt')
+    # create_report_file('queries.txt', 'output.tsv', 'report.txt')
     main()
