@@ -1,4 +1,4 @@
-# GoogleParserTechTestPromo 
+# GoogleParser
 
 #### About project:
   Simple no UI project for parsing google results for specific queries from `.txt` file, writing results into `.tsv` file.
