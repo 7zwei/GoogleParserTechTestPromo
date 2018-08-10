@@ -29,3 +29,7 @@
 #### Additional:
   - Use `create_report_file` function in case of any type of interrupted execution to get the list of queries that were not executed (`report.txt`)
   - Check the `banned_proxies.txt` files for the list of proxies that were banned.
+
+
+
+##### This is the test project for the interview on Python Developer position.
