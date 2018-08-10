@@ -18,7 +18,7 @@
   `requests, urllib3, bs4, html5, user_agent`
 
 #### Usage:
-  - Fill out the above described files (`proxies.txt` and `queries.txt`) with list of proxies and queries respectively.
+  - Fill out the above described files (`proxies.txt` and `queries.txt`) with the list of proxies and queries respectively.
   - Set the required attributes (language, region, domain, number of results) in `MainScraper.py` at
   > LINE 77 `'ru', 'ua', 'www.google.com.ua', 100`
   - Set the maximum amount threads to be run at
